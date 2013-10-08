@@ -63,7 +63,7 @@ void vtablehook_protect(void* region, int protection) {
 
 void* vtablehook_hook(void* instance, void* hook, int offset) {
         intptr_t vtable = *((intptr_t*)instance);
-        intptr_t entry = vtable + 4 * offset;
+        intptr_t entry = vtable + sizeof(intptr_t) * offset;
         intptr_t original = *((intptr_t*) entry);
 
         int original_protection = vtablehook_unprotect((void*)entry);
