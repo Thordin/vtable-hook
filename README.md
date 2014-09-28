@@ -33,10 +33,10 @@ void FooHook(Object* that) {
 
 int main() {
         Object* o = new Object(123);
-        o->Foo();
+        o->Foo(); // prints Bar
 
         vtablehook_hook(o, (void*)FooHook, 0);
-        o->Foo();
+        o->Foo(); // prints Hooked 123
 
         return 0;
 }
